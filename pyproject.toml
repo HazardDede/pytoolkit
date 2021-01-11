@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "pytoolkit"
+name = "pytoolkit42"
 version = "0.1.0"
 description = "Collection of useful utilities and tools for python projects"
 authors = ["Dennis Muth <d.muth@gmx.net>"]
