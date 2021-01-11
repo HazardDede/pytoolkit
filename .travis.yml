@@ -1,0 +1,16 @@
+language: python
+dist: xenial
+python:
+  - 3.6
+  - 3.7
+  - 3.8
+before_install:
+  - pip install --upgrade pip
+  - pip install poetry==1.0.0
+install:
+  - poetry install
+script:
+  - poetry run inv lint
+  - poetry run inv test
+after_success:
+  - poetry run coveralls

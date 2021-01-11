@@ -1,0 +1,50 @@
+[tool.poetry]
+name = "pytoolkit"
+version = "0.0.1"
+description = "Collection of useful utilities and tools for python projects"
+authors = ["Dennis Muth <d.muth@gmx.net>"]
+maintainers = ["Dennis Muth <d.muth@gmx.net>"]
+readme = "README.md"
+license = "MIT"
+homepage = "https://github.com/HazardDede/pytoolkit"
+repository = "https://github.com/HazardDede/pytoolkit"
+documentation = "https://github.com/HazardDede/pytoolkit"
+keywords = ["library", "tools", "python", "utility", "mixins", "decorators"]
+classifiers = [
+    'Development Status :: 3 - Alpha',
+    'Intended Audience :: Developers',
+    'Topic :: Utilities',
+    'License :: OSI Approved :: MIT License',
+    'Programming Language :: Python :: 3.6',
+    'Programming Language :: Python :: 3.7',
+    'Programming Language :: Python :: 3.8'
+]
+packages = [
+    { include = "pytoolkit" }
+]
+include = [
+    "LICENSE"
+]
+
+[tool.poetry.dependencies]
+python = "^3.6"
+typeguard = "^2.10.0"
+fastcore = "^1.3.18"
+
+[tool.poetry.dev-dependencies]
+invoke = "^1.5.0"
+bumpversion = "^0.6.0"
+coveralls = "^2.2.0"
+flake8 = "^3.8.4"
+mock = "^4.0.3"
+mypy = "^0.790"
+pylint = "^2.6.0"
+pytest = "^6.2.1"
+pytest-asyncio = "^0.14.0"
+pytest-cov = "^2.10.1"
+Sphinx = "^3.4.3"
+sphinx-rtd-theme = "^0.5.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
