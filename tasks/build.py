@@ -10,6 +10,14 @@ def version(ctx):
 
 
 @task
+def requirements(ctx):
+    """Generates the requirements.txt from poetry."""
+    ctx.run(
+        "poetry export -f requirements.txt --output requirements.txt --dev --without-hashes"
+    )
+
+
+@task
 def clean(ctx):
     """Removes python build artifacts (*.pyc, *.pyo, caches, ...)"""
     ctx.run(

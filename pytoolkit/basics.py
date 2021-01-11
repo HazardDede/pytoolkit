@@ -1,4 +1,5 @@
 """Includes useful general purpose utility stuff."""
+
 import inspect
 from typing import Any, Callable, Type, Optional, cast, Union, Set, Iterable
 
@@ -12,7 +13,7 @@ class classproperty:  # pylint: disable=invalid-name
     Make class methods look like read-only class properties.
     Writing to that class-property will not do what you expect ;-)
 
-    If cache is set to True will invoke the getter method once and cache the result.
+    If `caching` is set to `True` will only invoke the getter method once and cache the result.
     This makes sense if your property is computed once and after that never changed.
 
     Examples:
@@ -63,24 +64,21 @@ def field_mro(clazz: Any, field: str) -> Set[str]:
     class field.
 
     Args:
-        clazz: The class to inspect.
-        field: The field to collect the values.
+        clazz (Any): The class to inspect.
+        field (str): The field to collect the values.
 
     Returns:
-        Returns a compiled set of values for the given field for each class in the class hierarchy of the passed
-        class or instance.
+        Set[str]: Returns a compiled set of values for the given field for each class in the class hierarchy of the
+        passed class or instance.
 
     Example:
 
         >>> class Root:
         ...     __myfield__ = 'root'
-
         >>> class A(Root):
         ...     __myfield__ = ['a', 'common']
-
         >>> class B(Root):
         ...     __myfield__ = ['b', 'common']
-
         >>> class Final(A, B):
         ...     __myfield__ = 'final'
 
@@ -88,8 +86,7 @@ def field_mro(clazz: Any, field: str) -> Set[str]:
         True
         >>> field_mro(A, '__myfield__') == {'root', 'a', 'common'}
         True
-        >>> f = Final()
-        >>> field_mro(f, '__myfield__') == {'root', 'a', 'b', 'common', 'final'}
+        >>> field_mro(Final(), '__myfield__') == {'root', 'a', 'b', 'common', 'final'}
         True
     """
     res = set()  # type: Set[str]

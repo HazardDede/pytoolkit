@@ -26,4 +26,5 @@ ns.add_collection(testing)
 
 # Tasks
 ns.add_task(build.version)
+ns.add_task(build.requirements)
 ns.add_task(build.clean)

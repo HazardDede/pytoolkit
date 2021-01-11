@@ -5,13 +5,13 @@ from typing import Any
 
 def is_iterable_but_no_str(candidate: Any) -> bool:
     """
-    Checks if the given candidate is an iterable but not a str instance
+    Checks if the given `candidate` is an `iterable` but not a `str` instance
 
     Args:
-        candidate: The candidate to test.
+        candidate (Any): The candidate to test.
 
     Returns:
-        Returns True if the given candidate is an iterable but no str; otherwise False.
+        bool: Returns `True` if the given `candidate` is an `iterable` but no `str`; otherwise `False`.
 
     Example:
         >>> is_iterable_but_no_str(['a'])
@@ -26,7 +26,13 @@ def is_iterable_but_no_str(candidate: Any) -> bool:
 
 def is_real_float(candidate: Any) -> bool:
     """
-    Checks if the given candidate is a real float. An integer will return False.
+    Checks if the given `candidate` is a real `float`. An `integer` will return `False`.
+
+    Args:
+        candidate (Any): The candidate to test.
+
+    Returns:
+        bool: Returns `True` if the `candidate` is a real float; otherwise `False.`
 
     Examples:
         >>> is_real_float(1.1)

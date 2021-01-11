@@ -15,7 +15,7 @@ def bps_mbps(val: float) -> float:
         val (float): The value in bits per second to convert.
 
     Returns:
-        Returns val in megabits per second.
+        float: Returns val in megabits per second.
 
     Examples:
 
@@ -30,13 +30,14 @@ def bps_mbps(val: float) -> float:
 def camel_to_snake(camel_str: str) -> str:
     """
     Converts camelCase to snake_case.
-    https://stackoverflow.com/questions/1175208/elegant-python-function-to-convert-camelcase-to-snake-case
+
+        https://stackoverflow.com/questions/1175208/elegant-python-function-to-convert-camelcase-to-snake-case
 
     Args:
         camel_str (str): The camelCase string to convert to snake_case.
 
     Returns:
-        Returns the snake_case representation of the passed camelCase string.
+        str: Returns the snake_case representation of the passed camelCase string.
 
     >>> camel_to_snake('CamelCase')
     'camel_case'
@@ -68,12 +69,14 @@ def transform_dict(
     Transforms keys and/or values of the given dictionary by applying the given functions.
 
     Args:
-        dct: The dictionary to transform.
-        key_fun: The function to apply to all dictionary keys. If not passed the keys will be unaltered.
-        val_fun: The function to apply to all dictionary values. If not passed the values will be unaltered.
+        dct (dict): The dictionary to transform.
+        key_fun (TransformDictFun): The function to apply to all dictionary keys. If not passed the keys will
+            be unaltered.
+        val_fun (TransformDictFun): The function to apply to all dictionary values. If not passed the values will
+            be unaltered.
 
     Return:
-        Returns a new dictionary by applying the key and/or value function to the given dictionary.
+        dict: Returns a new dictionary by applying the key and/or value function to the given dictionary.
         If both transformation functions are not supplied the passed dictionary will be returned unaltered.
 
     Examples:

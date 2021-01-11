@@ -7,13 +7,13 @@ from pytoolkit.check import is_iterable_but_no_str
 
 def is_hashable(candidate: Any) -> bool:
     """
-    Determines whether the candidate can be hashed or not.
+    Determines whether the `candidate` can be hashed or not.
 
     Args:
-        candidate: The candidate to test if it is hashable.
+        candidate (Any): The candidate to test if it is hashable.
 
     Returns:
-        True if `candidate` is hashable; otherwise False.
+        bool: `True` if `candidate` is hashable; otherwise `False`.
 
     Examples:
         >>> is_hashable("i am")
@@ -35,10 +35,10 @@ def make_hashable(obj: Any) -> Any:
     and the function will fail in that case.
 
     Args:
-        obj: The object to convert to a hashable object.
+        obj (Any): The object to convert to a hashable object.
 
     Returns:
-        Returns a hashable representation of the passed argument.
+        Any: Returns a hashable representation of the passed argument.
 
     Examples:
         >>> make_hashable("unchanged")

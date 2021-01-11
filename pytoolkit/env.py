@@ -10,15 +10,13 @@ def modify_environ(*remove: str, **update: str) -> Iterator[None]:
     """
     Temporarily updates the `os.environ` dictionary in-place and resets it to the original state
     when finished.
-    (https://stackoverflow.com/questions/2059482/
-        python-temporarily-modify-the-current-processs-environment/34333710#34333710)
 
     The `os.environ` dictionary is updated in-place so that the modification is sure to work in
     most situations.
 
     Args:
-        remove: Environment variables to remove from the environment scope..
-        update: Dictionary of environment variables and values to add if it does not exist or update it's value.
+        remove (str): Environment variables to remove from the environment scope.
+        update (str): Dictionary of environment variables and values to add if it does not exist or update it's value.
 
     Examples:
         >>> import os

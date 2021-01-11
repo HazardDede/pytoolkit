@@ -7,11 +7,11 @@ def listify(item_or_items: Union[Any, Iterable[Any]]) -> Optional[List[Any]]:
     Makes a list out of the given item or items.
 
     Args:
-        item_or_items: A single value or an iterable.
+        item_or_items (Any): A single value or an iterable.
 
     Returns:
-        Returns the given argument as an list.
-        If the argument is already a list the identity will be returned.
+        List[Any]: Returns the given argument as a list.
+        If the argument is already a list the identity will be returned unaltered.
 
     Examples:
         >>> listify(1)
@@ -54,11 +54,11 @@ def try_parse_bool(  # pylint: disable=too-many-return-statements
     be returned. A special case is `None`: It will always return the default value.
 
     Args:
-        value: Value to parse.
-        default (optional): The value to return in case the conversion is not successful.
+        value (Any): Value to parse.
+        default (bool, optional): The value to return in case the conversion is not successful.
 
     Returns:
-        If the conversion is successful the converted representation of value; otherwise the default.
+        (bool, optional): If the conversion is successful the converted representation of value; otherwise the default.
 
     Examples:
         >>> try_parse_bool(1)

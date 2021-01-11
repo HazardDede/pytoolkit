@@ -4,5 +4,6 @@ PyToolkit
 .. toctree::
    :maxdepth: 1
 
-   usage/installation
+   installation
+   tools
    changelog

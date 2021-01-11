@@ -5,7 +5,7 @@ from typing import Any
 from fastcore.basics import basic_repr
 
 from pytoolkit import classproperty
-from pytoolkit.base import field_mro
+from pytoolkit.basics import field_mro
 
 
 class LogMixin:
@@ -34,8 +34,8 @@ class LogMixin:
 
 
 class ReprMixin:
-    """Adds a __repr__ and a __str__ method to the instance. You can control the fields to show
-    via the __REPR_FIELDS__ class field.
+    """Adds a `__repr__` and a `__str__` method to the instance. You can control the fields to show
+    via the `__REPR_FIELDS__` class field.
 
     Examples:
 
