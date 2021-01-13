@@ -133,3 +133,6 @@ dmypy.json
 
 # IntelliJ
 .idea/
+
+# Private stuff
+new_features.txt
