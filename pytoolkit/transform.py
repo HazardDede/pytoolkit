@@ -27,7 +27,7 @@ def bps_mbps(val: float) -> float:
     return round(float(val) / 1000000, 2)
 
 
-def camel_to_snake(camel_str: str) -> str:
+def camel_to_snake(camel_str: str, delimiter: str = '_') -> str:
     """
     Converts camelCase to snake_case.
 
@@ -35,28 +35,72 @@ def camel_to_snake(camel_str: str) -> str:
 
     Args:
         camel_str (str): The camelCase string to convert to snake_case.
+        delimiter (str): The delimiter to use for the snake_case. Defaults to '_'.
 
     Returns:
         str: Returns the snake_case representation of the passed camelCase string.
 
-    >>> camel_to_snake('CamelCase')
-    'camel_case'
-    >>> camel_to_snake('CamelCamelCase')
-    'camel_camel_case'
-    >>> camel_to_snake('Camel2Camel2Case')
-    'camel2_camel2_case'
-    >>> camel_to_snake('getHTTPResponseCode')
-    'get_http_response_code'
-    >>> camel_to_snake('get2HTTPResponseCode')
-    'get2_http_response_code'
-    >>> camel_to_snake('HTTPResponseCode')
-    'http_response_code'
-    >>> camel_to_snake('HTTPResponseCodeXYZ')
-    'http_response_code_xyz'
+    Example:
+
+        >>> camel_to_snake('CamelCase')
+        'camel_case'
+        >>> camel_to_snake('CamelCamelCase')
+        'camel_camel_case'
+        >>> camel_to_snake('Camel2Camel2Case')
+        'camel2_camel2_case'
+        >>> camel_to_snake('getHTTPResponseCode')
+        'get_http_response_code'
+        >>> camel_to_snake('get2HTTPResponseCode')
+        'get2_http_response_code'
+        >>> camel_to_snake('HTTPResponseCode')
+        'http_response_code'
+        >>> camel_to_snake('HTTPResponseCodeXYZ')
+        'http_response_code_xyz'
+
+        >>> camel_to_snake('CamelCase', delimiter='.')
+        'camel.case'
 
     """
-    _str = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', str(camel_str))
-    return re.sub('([a-z0-9])([A-Z])', r'\1_\2', _str).lower()
+    delimiter = str(delimiter)
+    _str = re.sub('(.)([A-Z][a-z]+)', r'\1{}\2'.format(delimiter), str(camel_str))
+    return re.sub('([a-z0-9])([A-Z])', r'\1{}\2'.format(delimiter), _str).lower()
+
+
+def snake_to_camel(snake_str: str, delimiter: str = '_') -> str:
+    """
+    Converts snake_case to camelCase. Useful for projects where different languages like NodeJS are used and you
+    have to transform your interchange format from snake_case into camelCase.
+
+    Args:
+        snake_str (str): The snake_case string to convert to camelCase.
+        delimiter (str): The delimiter to use for the snake_case. Defaults to '_'.
+
+    Returns:
+        str: Returns the camelCase representation of the passed snake_case string.
+
+    Example:
+        >>> snake_to_camel('the_id')
+        'theId'
+        >>> snake_to_camel('The_id')
+        'theId'
+        >>> snake_to_camel('Theid')  # Not snake_case -> as is
+        'Theid'
+        >>> snake_to_camel('snake_CasE')
+        'snakeCase'
+        >>> snake_to_camel('camelCase')  # Already camelCase -> as is
+        'camelCase'
+        >>> snake_to_camel('')
+        ''
+        >>> snake_to_camel(None)  # Not snake_case -> as is
+        'None'
+
+        >>> snake_to_camel('snake.CasE', '.')
+        'snakeCase'
+    """
+    init, *rest = str(snake_str).split(str(delimiter))
+    if not rest:
+        return init  # Leave it as it is. Probably not snake_case
+    return ''.join([init.lower(), *map(str.title, rest)])
 
 
 @typechecked
