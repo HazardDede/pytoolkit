@@ -2,7 +2,7 @@
 
 from .basics import classproperty
 
-__version__ = "0.1.1"
+__version__ = "0.1.2"
 __author__ = "Dennis Muth <d.muth@gmx.net>"
 
 
