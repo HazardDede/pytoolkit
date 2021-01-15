@@ -63,7 +63,8 @@ def camel_to_snake(camel_str: str) -> str:
 def transform_dict(
         dct: Dict[Any, Any],
         key_fun: Optional[TransformDictFun] = None,
-        val_fun: Optional[TransformDictFun] = None
+        val_fun: Optional[TransformDictFun] = None,
+        recursive: bool = False
 ) -> Dict[Any, Any]:
     """
     Transforms keys and/or values of the given dictionary by applying the given functions.
@@ -74,6 +75,8 @@ def transform_dict(
             be unaltered.
         val_fun (TransformDictFun): The function to apply to all dictionary values. If not passed the values will
             be unaltered.
+        recursive (bool): If True will recursively go down any encountered dict; otherwise will only transform the
+            first level of the dict.
 
     Return:
         dict: Returns a new dictionary by applying the key and/or value function to the given dictionary.
@@ -97,11 +100,18 @@ def transform_dict(
         {'CamelCase': 'gnaaa', 'foo_oool': 42}
         >>> res is dct
         True
+
+        >>> dct_ = {1: {11: 'snakeCase', 12: 'snake_case'}, 2: 22}
+        >>> (transform_dict(dct_, str, camel_to_snake, True) ==
+        ...     {'1': {'11': 'snake_case', '12': 'snake_case'}, '2': '22'})
+        True
     """
     if not key_fun and not val_fun:
         return dct
 
     def apply(kov: Any, fun: Optional[Callable[[Any], Any]]) -> Any:
+        if recursive and isinstance(kov, dict):
+            return transform_dict(kov, key_fun, val_fun, recursive)
         return kov if not fun else fun(kov)
 
     return {apply(k, key_fun): apply(v, val_fun) for k, v in dct.items()}
