@@ -53,4 +53,6 @@ Transform
 
 .. autofunction:: pytoolkit.transform.camel_to_snake
 
+.. autofunction:: pytoolkit.transform.snake_to_camel
+
 .. autofunction:: pytoolkit.transform.transform_dict
